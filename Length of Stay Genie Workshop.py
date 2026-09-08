@@ -55,9 +55,9 @@
 # MAGIC
 # MAGIC | Sample Table | Rows | Production Equivalent |
 # MAGIC |---|---|---|
-# MAGIC | `nwm_los_workshop.rpt_vizient_and_hd_unioned` | 35,000 | `clinical_dm.hospital_encounters.rpt_vizient_and_hd_unioned` |
-# MAGIC | `nwm_los_workshop.dim_date` | 1,461 | `edr.cds.dim_date` |
-# MAGIC | `nwm_los_workshop.rpt_criticalcare_domainsummary` | 3,680 | `clinical_dm.critical_care.rpt_criticalcare_domainsummary` |
+# MAGIC | `demo_los_workshop.rpt_vizient_and_hd_unioned` | 35,000 | `clinical_dm.hospital_encounters.rpt_vizient_and_hd_unioned` |
+# MAGIC | `demo_los_workshop.dim_date` | 1,461 | `edr.cds.dim_date` |
+# MAGIC | `demo_los_workshop.rpt_criticalcare_domainsummary` | 3,680 | `clinical_dm.critical_care.rpt_criticalcare_domainsummary` |
 
 # COMMAND ----------
 
@@ -71,7 +71,7 @@
 from pyspark.sql import functions as F
 
 CATALOG = "schauhan_workspace_catalog"   # <-- Update based on your access
-SCHEMA  = "nwm_los_workshop"             # <-- Update based on your access
+SCHEMA  = "demo_los_workshop"             # <-- Update based on your access
 
 # Create widgets so SQL cells can reference via ${catalog} and ${schema_name}
 dbutils.widgets.text("catalog", CATALOG, "Catalog")
@@ -418,7 +418,7 @@ print("   Now the gold view can join 6 sources: fact + dim_date + critical_care 
 # DBTITLE 1,⭐ BUILD: Create the LOS Gold View
 # MAGIC %sql
 # MAGIC -- ⭐ BUILD: Create the denormalized gold view for the LOS Genie space
-# MAGIC -- Rebuilt to match the customer's DDL notebook exactly (NM LOS PBI (DDL).dbc)
+# MAGIC -- Rebuilt to match the reference DDL layout exactly.
 # MAGIC -- Only columns confirmed in the DDL AND present in our workshop sample tables are included.
 # MAGIC -- 🏥 PRODUCTION comments mark columns from the DDL that require additional source tables.
 # MAGIC --
@@ -1426,7 +1426,7 @@ print("📝 Per-column metadata with synonyms & formats → los_metrics metric v
 # MAGIC
 # MAGIC 3. When the user asks about "inpatient LOS", use los_inpatient_days. When they ask about "observation LOS", use los_observation_hours (in hours, not days).
 # MAGIC
-# MAGIC 4. Hospital abbreviations: NMH = Northwestern Memorial Hospital, CDH = Central DuPage Hospital, PH = Palos Hospital, MCH = Marianjoy, LFH = Lake Forest Hospital, KH = Kishwaukee Hospital, VH = Valley West Hospital, DHG = Delnor Hospital.
+# MAGIC 4. Hospital abbreviations: NMH = Metro Central Hospital, CDH = West Valley Hospital, PH = Southgate Hospital, MCH = Rosewood Rehab, LFH = Lakeside Hospital, KH = Prairie Hospital, VH = Westfield Hospital, DHG = Fox River Hospital.
 # MAGIC
 # MAGIC 5. Always round LOS averages to 2 decimal places.
 # MAGIC

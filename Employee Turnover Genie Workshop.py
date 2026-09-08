@@ -96,7 +96,7 @@ from itertools import product
 random.seed(42)
 
 CATALOG = "schauhan_workspace_catalog"   # <-- Update based on your access
-SCHEMA  = "nwm_turnover_workshop"        # <-- Update based on your access
+SCHEMA  = "demo_turnover_workshop"        # <-- Update based on your access
 
 # Create widgets so SQL cells can reference via ${catalog} and ${schema_name}
 dbutils.widgets.text("catalog", CATALOG, "Catalog")
@@ -118,20 +118,20 @@ SUB_ORGS = {
     "VWH":  "AMC Hospital",
     "KH":   "AMC Hospital",
     "HH":   "AMC Hospital",
-    "PHSC": "NM Physician Services",
-    "RNSC": "NM Research",
-    "MSC":  "NM Medical Staff",
-    "NMHC": "NM Home Care",
+    "PHSC": "Physician Services",
+    "RNSC": "Research Group",
+    "MSC":  "Medical Staff Org",
+    "NMHC": "Home Care Services",
 }
 
 # Department orgs
 DEPT_ORGS = {
-    "NHN Hospital": "Northwestern Hospital Network",
+    "NHN Hospital": "Regional Hospital Network",
     "AMC Hospital": "Academic Medical Centers",
-    "NM Physician Services": "NM Corporate",
-    "NM Research": "NM Corporate",
-    "NM Medical Staff": "NM Corporate",
-    "NM Home Care": "NM Corporate",
+    "Physician Services": "Corporate",
+    "Research Group": "Corporate",
+    "Medical Staff Org": "Corporate",
+    "Home Care Services": "Corporate",
 }
 
 # Job Family Groupers (JFG) — from benchmark questions
@@ -171,8 +171,8 @@ BUSINESS_UNITS = {"NMH": "NMH Main Campus", "CDH": "CDH Campus", "LFH": "LFH Cam
                   "HH": "HH Campus", "PHSC": "Physician Services", "RNSC": "Research",
                   "MSC": "Medical Staff Corp", "NMHC": "Home Care"}
 DEPT_TYPES = ["Inpatient", "Ambulatory", "Emergency", "Perioperative", "Administrative"]
-GEOGRAPHIES = ["Chicago", "Evanston", "Lake Forest", "Geneva", "Winfield",
-               "Downers Grove", "Palos Heights", "Skokie"]
+GEOGRAPHIES = ["Riverton", "Fairview", "Oakdale", "Greenville", "Fremont",
+               "Bristol", "Ashford", "Clifton"]
 SITES = ["Main Hospital", "Medical Office Bldg", "Outpatient Center", "Research Tower"]
 
 # Job families and job codes per JFG
